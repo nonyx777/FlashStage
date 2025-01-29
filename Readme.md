@@ -53,9 +53,11 @@ Each captured frame undergoes analysis to identify the brightest pixel correspon
 The algorithm to find the brightest pixel is based on the magnitude of the pixel's RGB values. The process can be mathematically described as:
 
 1. Compute the normalized magnitude of each pixel in the image:
+
 $$
 \text{Magnitude} = \frac{\sqrt{R^2 + G^2 + B^2}}{255}
 $$
+
 where \(R\), \(G\), and \(B\) are the red, green, and blue components of a pixel.
 
 2. Filter out pixels below a certain brightness threshold T:
