@@ -26,9 +26,9 @@ Instead of a dome filled with LEDs, we use a single flashlight to illuminate the
 
 - **Key Considerations for Consistency:**
 
-- Maintain uniform movement and distance of the flashlight.
+    - Maintain uniform movement and distance of the flashlight.
 
-- Ensure stable positioning of the subject and camera.
+    - Ensure stable positioning of the subject and camera.
 
 This low-cost and portable method is ideal for fieldwork or environments with limited resources.
 
@@ -52,32 +52,34 @@ Each captured frame undergoes analysis to identify the brightest pixel correspon
 
 The algorithm to find the brightest pixel is based on the magnitude of the pixel's RGB values. The process can be mathematically described as:
 
-![Enter image alt description](Images/oaG_Image_3.png)
+$$
+\text{Magnitude} = \frac{\sqrt{R^2 + G^2 + B^2}}{255}
+$$
+where \(R\), \(G\), and \(B\) are the red, green, and blue components of a pixel.
 
-\[
+2. Filter out pixels below a certain brightness threshold T:
+
+$$
 \text{BrightMask}[i, j] =
 \begin{cases}
 \text{True} & \text{if } \text{Magnitude}[i, j] \geq T, \\
 \text{False} & \text{otherwise}
 \end{cases}
-\]
-
-
-where R, G, and B are the red, green, and blue components of a pixel.
-
-2. Filter out pixels below a certain brightness threshold T:
-
-![Enter image alt description](Images/2Cg_Image_4.png)
+$$
 
 Only pixels satisfying the condition are retained for further analysis.
 
 3. Calculate the weighted centroid of the bright pixels, where the weight is the pixel brightness:
 
-![Enter image alt description](Images/ucg_Image_5.png)
+$$
+\text{Centroid}_x = \frac{\sum \text{Magnitude}[i, j] \cdot i}{\sum \text{Magnitude}[i, j]}
+$$
 
-![Enter image alt description](Images/7kN_Image_6.png)
+$$
+\text{Centroid}_y = \frac{\sum \text{Magnitude}[i, j] \cdot j}{\sum \text{Magnitude}[i, j]}
+$$
 
-This yields the average position (Centroid~x~​, Centroid~y~​) of the brightest area.
+This yields the average position ($Centroid_x​, Centroid_y$​) of the brightest area.
 
 4. Convert the computed coordinates to an integer to obtain the pixel with the brightest location since we’re working with the index of the pixel.
 
