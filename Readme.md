@@ -200,6 +200,6 @@ Haileyesus K. Dessie - [Linkedin](https://www.linkedin.com/in/haileyesus-dessie-
 
 #### ***<span style="text - decoration: underline;">Our Incredible Mentors</span>***
 
-Gemmechu Hassena - [Linkedin](https://gemmechu.github.io/)
+Gemmechu Hassena - [Linkedin](https://et.linkedin.com/in/gemmechu)
 
 Surafel K. Mulaw - [Linkedin](https://www.linkedin.com/in/surafelk/)
