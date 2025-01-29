@@ -54,6 +54,15 @@ The algorithm to find the brightest pixel is based on the magnitude of the pixel
 
 ![Enter image alt description](Images/oaG_Image_3.png)
 
+\[
+\text{BrightMask}[i, j] =
+\begin{cases}
+\text{True} & \text{if } \text{Magnitude}[i, j] \geq T, \\
+\text{False} & \text{otherwise}
+\end{cases}
+\]
+
+
 where R, G, and B are the red, green, and blue components of a pixel.
 
 2. Filter out pixels below a certain brightness threshold T:
