@@ -8,7 +8,7 @@ At FlashStage, we asked ourselves a simple question: What if this powerful techn
 
 ## **The Previous Method**
 
-The Light Stage, developed at the University of Southern California, employs a dome-like structure fitted with dozens (or even hundreds) of LED lights and high-speed cameras. By illuminating a subject with precisely controlled light patterns, the system captures intricate details of how the skin reflects and scatters light. This data is essential for creating digital doubles or relighting the subject to match any environment, as demonstrated in *"Acquiring the Reflectance Field of a Human Face"* by Debevec et al.
+The Light Stage, developed at the University of Southern California, employs a dome-like structure fitted with dozens (or even hundreds) of LED lights and high-speed cameras. By illuminating a subject with precisely controlled light patterns, the system captures intricate details of how the skin reflects and scatters light. This data is essential for creating digital doubles or relighting the subject to match any environment, as demonstrated in [*"Acquiring the Reflectance Field of a Human Face"*](https://www.pauldebevec.com/Research/LS/debevec-siggraph2000-high.pdf) by Debevec et al.
 
 Despite its impressive results, building and operating a Light Stage is a daunting task. It requires specialized hardware, precise calibration, and substantial funding. This exclusivity inspired us to rethink the process from the ground up.
 
