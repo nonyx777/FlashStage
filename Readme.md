@@ -8,15 +8,15 @@ At FlashStage, we asked ourselves a simple question: What if this powerful techn
 
 ## **The Previous Method**
 
-The Light Stage, developed at the University of Southern California, uses a dome-like structure fitted with dozens (or even hundreds) of LED lights and high-speed cameras. The system captures intricate details about how their skin reflects and scatters light by illuminating a subject with precisely controlled light patterns. This data is essential for creating digital doubles or relighting the subject to match any environment.
+The Light Stage, developed at the University of Southern California, employs a dome-like structure fitted with dozens (or even hundreds) of LED lights and high-speed cameras. By illuminating a subject with precisely controlled light patterns, the system captures intricate details of how the skin reflects and scatters light. This data is essential for creating digital doubles or relighting the subject to match any environment, as demonstrated in *"Acquiring the Reflectance Field of a Human Face"* by Debevec et al.
 
-While the results are building and operating a Light Stage is a daunting task. It requires specialized hardware, precise calibration, and substantial funding. This exclusivity inspired us to rethink the process from the ground up.
+Despite its impressive results, building and operating a Light Stage is a daunting task. It requires specialized hardware, precise calibration, and substantial funding. This exclusivity inspired us to rethink the process from the ground up.
 
 ![Enter image alt description](Images/ji9_Image_2.jpeg)
 
 ## **Our Method**
 
-FlashStage aims to democratize relighting by creating a streamlined solution that delivers impressive results without bulky hardware or expensive setups. By using everyday tools such as a standard flashlight and a single camera our method captures the key elements required for relighting. Here’s how it works:
+FlashStage aims to democratize relighting by creating a streamlined solution that delivers impressive results without bulky hardware or expensive setups. By using everyday tools such as a standard flashlight and a single camera, our method captures the key elements required for relighting. Here’s how it works:
 
 ### **1. ****Data**** Collection with a Flashlight**
 
