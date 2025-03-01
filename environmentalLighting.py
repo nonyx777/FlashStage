@@ -27,6 +27,7 @@ args = parser.parse_args()
 image_paths = get_images(args.images)
 images_and_lightpoints = []
 col = 30
+row = 18
 
 ### Sort Images
 # images along with their lightpoints in a list
@@ -49,8 +50,8 @@ sky_array = np.clip(sky_array, 0, None) ** (1/2.2)
 
 print(f"Environment shape -> {sky_array.shape}")
 
-num_of_row = int(sky_array.shape[0] / 4)
-num_of_col = int(sky_array.shape[1] / 4)
+num_of_row = int(sky_array.shape[0] / row)
+num_of_col = int(sky_array.shape[1] / col)
 print(f"Number of rows -> {num_of_row}")
 print(f"Number of cols -> {num_of_col}")
 
