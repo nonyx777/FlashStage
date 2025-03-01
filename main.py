@@ -6,6 +6,7 @@ import argparse
 import process
 from PIL import Image
 import numpy as np
+import os
 
 if not glfw.init():
     raise Exception("GLFW initialization failed!")
@@ -20,6 +21,22 @@ glfw.make_context_current(window)
 imgui.create_context()
 renderer = GlfwRenderer(window)
 
+def get_images(paths):
+    supported_formats = ('.png', '.jpg', '.jpeg', '.bmp', '.gif')
+    image_files = []
+
+    for path in paths:
+        if os.path.isdir(path):
+            # If it's a directory, get all images inside it
+            image_files.extend(
+                [os.path.join(path, f) for f in os.listdir(path) if f.lower().endswith(supported_formats)]
+            )
+        elif os.path.isfile(path) and path.lower().endswith(supported_formats):
+            # If it's an image file, add it directly
+            image_files.append(path)
+    
+    return image_files
+
 def main():
     color1 = [0.5, 0.5, 0.5]
     color2 = [0.5, 0.5, 0.5]
@@ -28,9 +45,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("images", type=str, nargs='+', help="Paths to the images")
     args = parser.parse_args()
+    image_paths = get_images(args.images)
 
     #get the array of one of the images and zero it out
-    final_array = np.zeros(np.array(Image.open(args.images[0]).convert("RGB")).shape, dtype="uint8")
+    final_array = np.zeros(np.array(Image.open(image_paths[0]).convert("RGB")).shape, dtype="uint8")
 
     while not glfw.window_should_close(window):
         glfw.poll_events()
@@ -47,9 +65,9 @@ def main():
         #IMAGE PROCESSING
         if imgui.button("Apply change"):
             final_array = np.zeros_like(final_array)
-            for i in range(len(args.images)):
+            for i in range(len(image_paths)):
                 color = np.array(colors[i])
-                process.process_image(args.images[i], color, i, final_array)
+                process.relight_image(image_paths[i], color, i, final_array)
             final_image = Image.fromarray(final_array)
             final_image.save("final.png")
 
