@@ -80,10 +80,7 @@ for i in range(sorted_image.shape[0]):
         modified_image = Image.fromarray(modified_array)
         modified_image.save(f"./LightedImages/image{sky_index}.png")
         # resultant_array += modified_array
-        if sky_index >= sky_grid.size-1:
-            sky_index = sky_grid.size-1
-        else:
-            sky_index += 1
+        sky_index += 1
 
 for i in range(len(image_paths)):
     image = Image.open(f"./LightedImages/image{i}.png").convert("RGB")
