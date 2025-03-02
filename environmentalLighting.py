@@ -29,7 +29,7 @@ images_and_lightpoints = []
 col = 30
 row = 18
 
-### Sort Images
+## Sort Images
 # images along with their lightpoints in a list
 for image in image_paths:
     image_lightpoint = process.ImageLightpoint(image, process.mostLitArea(image))
@@ -57,11 +57,11 @@ print(f"Number of cols -> {num_of_col}")
 
 sky_grid = [
     sky_array[i:i+num_of_row, j:j+num_of_col]
-    for i in range(0, sky_array.shape[0], num_of_row)
-    for j in range(0, sky_array.shape[1], num_of_col)
+    for i in range(0, sky_array.shape[0] - (sky_array.shape[0] % num_of_row), num_of_row)
+    for j in range(0, sky_array.shape[1] - (sky_array.shape[1] % num_of_col), num_of_col)
 ]
 
-
+print(f"Sky grid divided {len(sky_grid)}")
 ### Takes average of each divided patch (convert it into a single color)
 ### Multiply each path with their respective image
 ### While adding each result to the resultant array
@@ -80,7 +80,10 @@ for i in range(sorted_image.shape[0]):
         modified_image = Image.fromarray(modified_array)
         modified_image.save(f"./LightedImages/image{sky_index}.png")
         # resultant_array += modified_array
-        sky_index += 1
+        if sky_index >= sky_grid.size-1:
+            sky_index = sky_grid.size-1
+        else:
+            sky_index += 1
 
 for i in range(len(image_paths)):
     image = Image.open(f"./LightedImages/image{i}.png").convert("RGB")
