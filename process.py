@@ -18,7 +18,7 @@ def relight_image(image_path, color, image_num, resultant_array):
 def mostLitArea(image_path: str) -> np.array(2,):
     image = Image.open(image_path).convert("RGB")
     image_array = np.array(image)
-    treshold: float = 1.0
+    treshold: float = 0.3
     #calculate magnitude of each color in the matrix
     pixel_norms = np.linalg.norm(image_array, axis=2) / 255
     bright_mask = pixel_norms < treshold
@@ -37,7 +37,12 @@ def mostLitArea(image_path: str) -> np.array(2,):
     for row in range(image_array.shape[0]):
         for col in range(image_array.shape[1]):
             weight += pixel_norms[row, col]
-    average_index = np.int64(np.floor(weight_x_index / weight))
+    if weight <= 0.1:
+        average_index = weight_x_index
+    else:
+        average_index = np.int64(np.floor(weight_x_index / weight))
+    # print(f"Weight: {weight}")
+    # print(f"Average Index: {average_index}")
     return average_index
 
 def sortImages(images_and_lightpoints, num_of_col: int):
