@@ -72,7 +72,7 @@ resultant_array = np.zeros_like(size_array).astype(np.float64)
 sky_index = 0
 for i in range(sorted_image.shape[0]):
     for j in range(sorted_image.shape[1]):
-        image = Image.open(f"{sorted_image[i, j].image_path}").convert("RGB").resize(target_size)
+        image = Image.open(f"{sorted_image[i, j].image_path}").convert("RGB")
         image_array = np.array(image)
         average_color = np.average(sky_grid[sky_index], axis=(0, 1))
         modified_array = image_array * average_color
