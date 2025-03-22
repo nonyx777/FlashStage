@@ -3,6 +3,7 @@ import argparse
 import process
 from PIL import Image
 import os
+import re
 
 def get_images(paths):
     supported_formats = ('.png', '.jpg', '.jpeg', '.bmp', '.gif')
@@ -25,7 +26,7 @@ parser.add_argument("images", type=str, nargs='+', help="Paths to the images")
 args = parser.parse_args()
 image_paths = get_images(args.images)
 images_and_lightpoints = []
-col = 8
+col = 4
 
 
 # images along with their lightpoints in a list
@@ -45,6 +46,11 @@ for row in range(image_matrix.shape[0]):
                 for j in range(image_matrix[row, col].lightpoint[1]-30, image_matrix[row, col].lightpoint[1]+30):
                     modified_array[i, j] = np.array([255, 0, 0])
         modified_image = Image.fromarray(modified_array)
-        modified_image.save(f"./LitPoints/image{row}{col}.png")
+        #remove symbols from image path
+        name = image_matrix[row, col].image_path
+        pattern = r"[.|/]"
+        name = [re.sub(pattern, '', s) for s in name]
+        name = "".join(name)
+        modified_image.save(f"./LitPoints/new_image{row}{col}_old_{name}.png")
         # print(f"{image_matrix[row, col].image_path} -> {image_matrix[row, col].lightpoint}")
         index += 1
